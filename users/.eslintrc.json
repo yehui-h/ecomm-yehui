@@ -1,0 +1,26 @@
+{
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": ["@typescript-eslint", "@stylistic/ts", "@stylistic/js"],
+    "rules": {
+        "semi": ["error", "never"],
+        "@stylistic/js/no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2,
+                "maxEOF": 1,
+                "maxBOF": 0
+            }
+        ],
+        "@stylistic/ts/lines-between-class-members": ["error", "always"]
+    },
+    "ignorePatterns": ["distribution/", "node_modules/"]
+}

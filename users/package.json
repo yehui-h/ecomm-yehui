@@ -1,0 +1,59 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "users service",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "npm run build && npm test",
+    "test": "jest --forceExit --runInBand --detectOpenHandles",
+    "build": "eslint . && tsc",
+    "buildimage": "npm run build && docker build -t yehuih/ecomm-yehui-user:${ECOMM_USER_TAG} -t yehuih/ecomm-yehui-user:latest .",
+    "pushimage": "docker push yehuih/ecomm-yehui-user:${ECOMM_USER_TAG} && docker push yehuih/ecomm-yehui-user:latest",
+    "publish": "npm run buildimage && npm run pushimage",
+    "launch": "docker-compose up",
+    "launchlocal": "npm run build && node ./distribution/index.js"
+  },
+  "keywords": [
+    "users",
+    "service"
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "setupFilesAfterEnv": [
+      "./src/utility/jest/JestGlobalSetup.ts"
+    ],
+    "testEnvironment": "node"
+  },
+  "author": "Yehui Huang",
+  "license": "ISC",
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^2.3.0",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.10",
+    "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.2",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.5"
+  }
+}

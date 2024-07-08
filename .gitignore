@@ -1,0 +1,10 @@
+node_modules
+distribution
+
+# Ignore webstore config file
+.idea/
+
+# Ignore all OS generated files
+.DS_Store
+
+env/.env.cicd
