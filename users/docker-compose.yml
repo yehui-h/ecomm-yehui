@@ -1,0 +1,25 @@
+version: "0.1.0"
+
+services:
+  user:
+    image: yehuih/ecomm-yehui-user:${ECOMM_USER_TAG}
+    container_name: ecomm_yehui_user
+    ports:
+      - "8080:80"
+    networks:
+      - ecomm-yehui-net
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: ecomm_yehui_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - /Users/yehuihuang/WebstormProjects/ecomm-yehui/users/mongodb:/data/db
+    networks:
+      - ecomm-yehui-net
+
+networks:
+  ecomm-yehui-net:
